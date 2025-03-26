@@ -23,6 +23,10 @@
 ### 2) PlatformBuddy - ChatBot
 #### Personal AI assistant
 #### Maintains chat history
+<img src="https://github.com/user-attachments/assets/9d3d95a0-d0f3-4045-80da-bf989c0fb39b" width="500">
+
+##### Sample url: http://127.0.0.1:5000/query2
+
 
 <br/>
 
@@ -69,6 +73,10 @@
 
 
 <br/>
+
+## How to run?
+#### pip install -r requirements.txt
+#### python app.py
 
 ## Future scope:
 
