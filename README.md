@@ -23,9 +23,9 @@
 ### Get Ansible template suggestion for new incidents
 #### Resolved incidents of past are being mapped to the ansible template. Whenever a new inicidents occurs, exact/similar incident can be found and thus suggested AAP template.
 #### Technical details: SQL db is requied for fast lookup. Currently csv files as data are used.
-![image](https://github.com/user-attachments/assets/016b624f-6cbb-401d-9cc5-2c96462f94e7)
+<img src="https://github.com/user-attachments/assets/016b624f-6cbb-401d-9cc5-2c96462f94e7" width="400">
 ##### Sample url: http://127.0.0.1:5000/template_search/incident_template
-![image](https://github.com/user-attachments/assets/7a099dcf-58ce-47da-ad85-ed9544d72338)
+<img src="https://github.com/user-attachments/assets/7a099dcf-58ce-47da-ad85-ed9544d72338" width="400">
 
 
 <br/>
