@@ -84,6 +84,14 @@
 #### python app.py
 #### Run index.html
 
+## Demo
+
+
+
+https://github.com/user-attachments/assets/4ca9124d-1627-432c-97db-75851e5e263b
+
+
+
 ## Future scope:
 
 ## 
