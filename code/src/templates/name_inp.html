@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Search</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            padding: 20px; 
+            background-color: #f4f4f9;
+        }
+        .container { 
+            max-width: 600px; 
+            margin: auto; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input { 
+            padding: 10px; 
+            margin-top: 10px; 
+            width: calc(100% - 22px); 
+            border: 1px solid #ccc; 
+            border-radius: 5px;
+        }
+        button { 
+            padding: 10px; 
+            margin-top: 10px; 
+            width: 100%; 
+            background-color: #007BFF; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover { 
+            background-color: #0056b3; 
+        }
+        .results { 
+            margin-top: 20px;
+        }
+        .result-item { 
+            padding: 15px; 
+            border-radius: 8px; 
+            background: #e9f5ff; 
+            border-left: 5px solid #007BFF; 
+            margin-top: 10px; 
+            font-size: 16px;
+        }
+        .result-title {
+            font-weight: bold;
+            color: #007BFF;
+        }
+        .result-id, .result-score {
+            font-size: 14px;
+            color: #555;
+        }
+        h2, h3 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Template Search</h2>
+        <form action="/template_search/" method="get">
+            <input type="text" name="name" placeholder="Enter name" required>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if results %}
+        <div class="results">
+            <h3>Top 5 Results</h3>
+            {% for result in results %}
+                <div class="result-item">
+                    <div class="result-title">{{ result.job_template_name }}</div>
+                    <div class="result-id">Job Template ID: {{ result.job_template_id }}</div>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

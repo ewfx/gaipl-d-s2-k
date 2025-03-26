@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Incident</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            margin: 10px 0;
+            padding: 8px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        h3 {
+            margin-top: 20px;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <>h1>Incident Search</h1>
+    <h2>Search suggested ansible template</h2>
+    <form id="incidentForm" method="get">
+        <label for="incident_no">Resolved Incident Number:</label>
+        <input type="text" id="incident_no" name="incident_no" required>
+        <button type="submit">Search</button>
+    </form>
+    
+    <script>
+        document.getElementById("incidentForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default submission
+            let incidentNo = document.getElementById("incident_no").value;
+            if (incidentNo) {
+                window.location.href = "/template_id/" + encodeURIComponent(incidentNo);
+            }
+        });
+    </script>
+</body>
+</html>
