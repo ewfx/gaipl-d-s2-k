@@ -3,6 +3,7 @@
 #### Powered by GenAI
 
 <br/>
+
 # Features
 ## Get Ansible template suggestion for new incidents
 ### Resolved incidents of past are being mapped to the ansible template. Whenever a new inicidents occurs, exact/similar incident can be found and thus suggested AAP template.
