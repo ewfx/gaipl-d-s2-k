@@ -49,6 +49,7 @@
 #### Technical details: 
 
 <img src="https://github.com/user-attachments/assets/3c159940-3bac-42a3-af1f-afeaacc47dac" width="600">
+
 #### URL: run gaipl-d-s2-k\code\src\ui\Snowcreator.html web page
 
 
