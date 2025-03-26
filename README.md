@@ -79,6 +79,7 @@
 ## How to run?
 #### pip install -r requirements.txt
 #### python app.py
+#### Run index.html
 
 ## Future scope:
 
