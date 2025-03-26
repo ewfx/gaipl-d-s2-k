@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/a4b231ad-2213-4f62-a97e-c6307c46062f)# NexGenSupport
+# NexGenSupport
 ### A one Stop platform for support team
 #### Powered by GenAI
 
@@ -48,7 +48,7 @@
 #### No need to fill all data while creating new inicidents. Just give prompt and AI will create it for you
 #### Technical details: 
 
-![image](https://github.com/user-attachments/assets/3c159940-3bac-42a3-af1f-afeaacc47dac)
+<img src="https://github.com/user-attachments/assets/3c159940-3bac-42a3-af1f-afeaacc47dac" width="600">
 #### URL: run gaipl-d-s2-k\code\src\ui\Snowcreator.html web page
 
 
