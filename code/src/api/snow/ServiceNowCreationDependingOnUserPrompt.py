@@ -7,7 +7,6 @@ import random
 app = Flask(__name__)
 CORS(app)
 
-
 def create_servicenow_incident(user_prompt, knowledge_data):
     enriched_prompt = enrich_prompt(user_prompt, knowledge_data)
     print(f"\n[DEBUG] Enriched Prompt: {enriched_prompt}")
@@ -26,7 +25,6 @@ def enrich_prompt(user_prompt, knowledge_data):
         return user_prompt
 
     enriched_prompt = f"{user_prompt}.  Here is related information from past incidents: "
-    enriched_prompt += " ".join([f"Incident ID: {item['Incident ID']}, Description: {item['Description']}, Category: {item['Category']}, Resolution Comments: {item['Resolution Comments']}, Change Record: {item['Change Record']}" for item in knowledge_data])
     return enriched_prompt
 
 
@@ -91,16 +89,16 @@ def create_incident_api():
         if not user_prompt:
             return jsonify({'error': 'Missing user_prompt in the request'}), 400
 
-        knowledge_data = load_knowledge_from_csv('knowledge_base.csv')
+        knowledge_data = load_knowledge_from_csv('synthetic_servicenow_incidents_cleaned.csv')
 
         print(f"\n[USER INPUT] User Prompt: {user_prompt}")
         new_incident = create_servicenow_incident(user_prompt, knowledge_data)
 
         if new_incident:
             print(f"\n[SUCCESS] Created incident in ServiceNow:")
-            return jsonify({'result': new_incident}), 201
+            return jsonify({'result': new_incident}), 201  # 201 Created status
         else:
-            return jsonify({'error': 'Failed to create incident'}), 500
+            return jsonify({'error': 'Failed to create incident'}), 500  # 500 Internal Server Error
 
     except Exception as e:
         error_message = f"An error occurred: {str(e)}"
