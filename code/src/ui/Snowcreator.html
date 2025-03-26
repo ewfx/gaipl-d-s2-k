@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiceNow Incident Creator</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-black p-4 ">
+<div class="max-w-4xl mx-auto space-y-6">
+    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-6">
+        ServiceNow Incident Creator
+    </h1>
+
+    <div class="bg-white/5 backdrop-blur-md border border-white/10 shadow-lg rounded-md p-4 md:p-6">
+        <h2 class="text-xl sm:text-2xl text-white mb-2">Describe the Incident</h2>
+        <p class="text-gray-400 mb-4">
+            Enter a detailed description of the issue you are experiencing.
+        </p>
+        <textarea
+                id="userPrompt"
+                placeholder="e.g., My laptop won't connect to the Wi-Fi..."
+                class="bg-black/20 text-white border-purple-500/30 placeholder:text-gray-500 min-h-[120px] w-full rounded-md p-4 resize-y mb-4 focus:outline-none focus:ring-2 focus:ring-purple-500/50"
+        ></textarea>
+        <button
+                id="createIncidentButton"
+                class="w-full bg-gradient-to-r from-purple-500 to-blue-500 text-white hover:from-purple-600 hover:to-blue-600 transition-all duration-300 shadow-lg hover:shadow-purple-500/50 rounded-md py-3 px-6 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+            Create Incident
+        </button>
+        <div id="errorMessage" class="text-red-500 text-sm bg-red-500/10 p-3 rounded-md border border-red-500/20 mt-4 hidden">
+        </div>
+    </div>
+
+    <div id="incidentDetails" class="bg-white/5 backdrop-blur-md border border-white/10 shadow-lg rounded-md p-4 md:p-6 hidden">
+        <h2 class="text-xl sm:text-2xl text-green-400 mb-2">Incident Created Successfully</h2>
+        <p class="text-gray-400 mb-4">
+            The following incident has been created in ServiceNow:
+        </p>
+        <div class="space-y-2 text-white">
+            <p><span class="font-semibold text-gray-300">Number:</span> <span id="incidentNumber"></span></p>
+            <p><span class="font-semibold text-gray-300">Short Description:</span> <span id="incidentShortDescription"></span></p>
+            <p><span class="font-semibold text-gray-300">Description:</span> <span id="incidentDescription"></span></p>
+            <p><span class="font-semibold text-gray-300">Category:</span> <span id="incidentCategory"></span></p>
+            <p><span class="font-semibold text-gray-300">Sys ID:</span> <span id="incidentSysId"></span></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const userPromptInput = document.getElementById('userPrompt');
+    const createIncidentButton = document.getElementById('createIncidentButton');
+    const errorMessageDiv = document.getElementById('errorMessage');
+    const incidentDetailsDiv = document.getElementById('incidentDetails');
+    const incidentNumberSpan = document.getElementById('incidentNumber');
+    const incidentShortDescriptionSpan = document.getElementById('incidentShortDescription');
+    const incidentDescriptionSpan = document.getElementById('incidentDescription');
+    const incidentCategorySpan = document.getElementById('incidentCategory');
+    const incidentSysIdSpan = document.getElementById('incidentSysId');
+
+    createIncidentButton.addEventListener('click', async () => {
+        const userPrompt = userPromptInput.value.trim();
+        errorMessageDiv.classList.add('hidden');
+        incidentDetailsDiv.classList.add('hidden');
+        createIncidentButton.disabled = true;
+        createIncidentButton.textContent = 'Creating Incident...';
+
+        if (!userPrompt) {
+            errorMessageDiv.textContent = "Please enter a description of the incident.";
+            errorMessageDiv.classList.remove('hidden');
+            createIncidentButton.disabled = false;
+            createIncidentButton.textContent = 'Create Incident';
+            return;
+        }
+
+        try {
+            const response = await fetch('http://127.0.0.1:5000/create_incident', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ user_prompt: userPrompt }),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to create incident');
+            }
+
+            const data = await response.json();
+            const incident = data.result;
+
+            incidentNumberSpan.textContent = incident.number;
+            incidentShortDescriptionSpan.textContent = incident.short_description;
+            incidentDescriptionSpan.textContent = incident.description;
+            incidentCategorySpan.textContent = incident.category;
+            incidentSysIdSpan.textContent = incident.sys_id;
+            incidentDetailsDiv.classList.remove('hidden');
+
+        } catch (error) {
+            errorMessageDiv.textContent = error.message || 'An unexpected error occurred';
+            errorMessageDiv.classList.remove('hidden');
+        } finally {
+            createIncidentButton.disabled = false;
+            createIncidentButton.textContent = 'Create Incident';
+        }
+    });
+</script>
+</body>
+</html>
