@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incident Search Result</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 50px; 
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .result {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Incident Search Result</h2>
+        
+        {% if template_id is not none %}
+            <p>Resolved Incident Number: <strong>{{ incident_no }}</strong></p>
+            <p class="result">Implemented ansible | Template ID: {{ template_id }}</p>
+        {% else %}
+            <p>No template found for incident <strong>{{ incident_no }}</strong>.</p>
+        {% endif %}
+        <p>This Template used for resolving incident {{ incident_no }}</p>
+    </div>
+</body>
+</html>
