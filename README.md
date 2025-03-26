@@ -26,7 +26,7 @@
 ### 2) PlatformBuddy - ChatBot
 #### Personal AI assistant
 #### Maintains chat history
-<img src="https://github.com/user-attachments/assets/9d3d95a0-d0f3-4045-80da-bf989c0fb39b" width="500">
+<img src="https://github.com/user-attachments/assets/f51946e6-5e6e-46e2-8350-d00137a24dfb" width="500">
 
 ##### Sample url: http://127.0.0.1:5000/query2
 
