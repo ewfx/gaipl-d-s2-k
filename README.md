@@ -37,6 +37,8 @@
 #### Technical details: SQL db is requied for fast lookup. Currently csv files as data are used.
 <img src="https://github.com/user-attachments/assets/016b624f-6cbb-401d-9cc5-2c96462f94e7" width="500">
 
+#### sample incident : INC0000079
+
 ##### Sample url: http://127.0.0.1:5000/template_search/incident_template
 
 <img src="https://github.com/user-attachments/assets/7a099dcf-58ce-47da-ad85-ed9544d72338" width="600">
