@@ -9,6 +9,9 @@ import utils.chatbot as cb
 
 app = Flask(__name__)
 
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/template_search/')
 def template_search():
@@ -50,7 +53,7 @@ def quick_incident():
     
 
 
-@app.route('/query2')
+@app.route('/platformbuddy')
 def home():
     return render_template('chatbot.html')  # Changed from 'index.html' to 'chatbot.html'
 
