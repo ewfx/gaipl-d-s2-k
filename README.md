@@ -10,6 +10,9 @@
 
 <br/>
 
+<img src="https://github.com/user-attachments/assets/18348d85-b0b9-48aa-88c6-e724f9368f2b" width="500">
+
+
 
 ### 1) Find Exact/Similar resolved incidents
 #### Make life easier while solving incidents. If there are any related or same incident solved in the past, look at it how it was solved.
